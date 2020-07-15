@@ -30,7 +30,7 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
 
             return (
                 
-                <div>
+                
                     
                 <ListGroup
                  key={arr.id}>
@@ -39,11 +39,11 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
                 <p>-- {arr.author}, {arr.datenyear}</p>
                 </li>
                 </ListGroup>
-                </div>
+                
             )
       });
       return (
-          <div>
+          <div >
               <h4>
                   Comments
               </h4>
@@ -66,18 +66,18 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
 
                 const dish=this.props.selected;
                 return (
-                    // <div className="container">
+                    <div className="container">
                     <div className="row">
                         <div className="col col-md-5 m-1">
                         
                             {this.renderDish(dish)}
                         </div>
-                        <div className="col col-md-5 m-1">
+                        <div className="col-12 col-md-5 m-1">
                             {/* <h4>Comments</h4> */}
                             {this.renderComments(dish)}
                         </div>
                     </div>
-                    // </div>
+                     </div>
                 )
 
             }
