@@ -44,14 +44,20 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
                  key={arr.id}>
                 <li className="list-unstyled">
                 <p>{arr.comment}</p>
-                <p>--{arr.author},{arr.date}</p>
+                <p>-- {arr.author}, {arr.datenyear}</p>
                 </li>
                 </ListGroup>
                 </div>
             )
       });
       return (
-          com
+          <div>
+              <h4>
+                  Comments
+              </h4>
+              {com}
+          </div>
+          
       );
     }
       else {
@@ -74,7 +80,7 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
                             {this.renderDish(dish)}
                         </div>
                         <div className="col col-md-5 m-1">
-                            
+                            {/* <h4>Comments</h4> */}
                             {this.renderComments(dish)}
                         </div>
                     </div>
