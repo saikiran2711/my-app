@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reactstrap';
 
  class DishDetail extends Component{
-     constructor(props)
-     {
-        super(props);
-
-        this.state={
-
-        }
-
-     }
+     
 
   renderDish(dish) {
       if(dish != null){
@@ -74,6 +66,7 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
 
                 const dish=this.props.selected;
                 return (
+                    // <div className="container">
                     <div className="row">
                         <div className="col col-md-5 m-1">
                         
@@ -84,6 +77,7 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
                             {this.renderComments(dish)}
                         </div>
                     </div>
+                    // </div>
                 )
 
             }
