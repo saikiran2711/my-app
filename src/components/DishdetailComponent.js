@@ -7,6 +7,8 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
   renderDish(dish) {
       if(dish != null){
           return(
+              
+                  <div className="col col-md-5 m-1">
               <Card>
                   <CardImg top src={dish.image} alt={dish.name} />
                   <CardBody>
@@ -14,6 +16,8 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
                     <CardText>{dish.description}</CardText>
                   </CardBody>
               </Card>
+              </div>
+              
           );}
           else{
               return (
@@ -25,13 +29,9 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
 
   renderComments(comment) {
       if(comment != null){
-        
-            const com=comment.comments.map((arr) => {
+        const com=comment.comments.map((arr) => {
+             return (
 
-            return (
-                
-                
-                    
                 <ListGroup
                  key={arr.id}>
                 <li className="list-unstyled">
@@ -39,44 +39,35 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
                 <p>-- {arr.author}, {arr.datenyear}</p>
                 </li>
                 </ListGroup>
-                
             )
       });
       return (
-          <div >
+          
+              <div className="col-12 col-md-5 m-1">
               <h4>
                   Comments
               </h4>
               {com}
-          </div>
+          </div> 
           
       );
     }
       else {
           return(
-
-            <div>
-
+            <div >
             </div>
           )
       }
   }
 
             render(){
-
                 const dish=this.props.selected;
                 return (
                     <div className="container">
-                    <div className="row">
-                        <div className="col col-md-5 m-1">
-                        
-                            {this.renderDish(dish)}
-                        </div>
-                        <div className="col-12 col-md-5 m-1">
-                            {/* <h4>Comments</h4> */}
+                        <div className="row">
+                         {this.renderDish(dish)}
                             {this.renderComments(dish)}
                         </div>
-                    </div>
                      </div>
                 )
 
