@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reactstrap';
+import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,Breadcrumb,BreadcrumbItem} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
  class DishDetail extends Component{
      
@@ -29,14 +30,14 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
 
   renderComments(comment) {
       if(comment != null){
-        const com=comment.comments.map((arr) => {
+        const com=comment.map((arr) => {
              return (
 
                 <ListGroup
                  key={arr.id}>
                 <li className="list-unstyled">
                 <p>{arr.comment}</p>
-                <p>-- {arr.author}, {arr.datenyear}</p>
+                <p>-- {arr.author}, {arr.date}</p>
                 </li>
                 </ListGroup>
             )
@@ -61,12 +62,24 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,} from 'reacts
   }
 
             render(){
-                const dish=this.props.selected;
+                const dish=this.props.dish;
+                const comment=this.props.comments;
                 return (
                     <div className="container">
+                         <div className="row">
+                    <Breadcrumb>
+
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{this.props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{this.props.dish.name}</h3>
+                        <hr />
+                    </div>                
+                </div>
                         <div className="row">
                          {this.renderDish(dish)}
-                            {this.renderComments(dish)}
+                            {this.renderComments(comment)}
                         </div>
                      </div>
                 )
