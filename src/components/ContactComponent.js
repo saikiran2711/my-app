@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+// import {loc} from "../shared/img/loc.png";
 
 function Contact(props) {
     return(
@@ -8,10 +9,10 @@ function Contact(props) {
             <div className="row">
                 <Breadcrumb>
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>Contact Us</BreadcrumbItem>
+                    <BreadcrumbItem active>About Us</BreadcrumbItem>
                 </Breadcrumb>
                 <div className="col-12">
-                    <h3>Contact Us</h3>
+                    <h3>About Us</h3>
                     <hr />
                 </div>                
             </div>
@@ -31,9 +32,13 @@ function Contact(props) {
                         </address>
                 </div>
                 <div className="col-12 col-sm-6 offset-sm-1">
-                    <h5>Map of our Location</h5>
+                    <h5>Map of our Location : </h5>
+                    {/* <img alt="location"loc={loc}></img>
+                     */}
+                     
+                     <img className="img-thumbnail" src={require('../shared/img/loc.png')} width="80%" height="90%"alt="location" />
                 </div>
-                <div className="col-12 col-sm-11 offset-sm-1">
+                <div className="col-12 col-sm-11 offset-sm-1 mt-4">
                     <div className="btn-group" role="group">
                         <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
                         <a role="button" className="btn btn-info" href="/"> <i className="fa fa-skype"></i> Skype</a>
