@@ -91,11 +91,11 @@ function About(props) {
                 <div className="col col-md-8">
                     <h2>Corporate Leadership</h2>
                 </div>
-                    <div className="col-12">
+                    {/* <div className="col-12"> */}
                     <Media list>
                     <RenderLeader leader={leader} />
                     </Media>
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
     
