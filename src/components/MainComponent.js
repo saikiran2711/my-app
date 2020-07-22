@@ -10,7 +10,7 @@ import Contact from "./ContactComponent";
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
-import About from './AboutComponenet';
+import About from './AboutComponent';
 
 class Main extends Component{
     constructor(props)
