@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem,Button,Form,FormGroup,Col,Label, Input, FormFeedback,Row } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem,Button,Col,Label,Row } from 'reactstrap';
 // import {loc} from "../shared/img/loc.png";
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
@@ -129,7 +129,8 @@ class Contact extends Component {
                         {/* <img alt="location"loc={loc}></img>
                          */}
                          
-                         <img className="img-thumbnail" src={require('../shared/img/loc.png')} width="80%" height="90%"alt="location" />
+                         {/* <img className="img-thumbnail" src={require('../shared/img/loc.png')} width="80%" height="90%"alt="location" /> */}
+                         <img className="img-thumbnail" src='assets/images/loc.png' width="80%" height="90%"alt="location" />
                     </div>
                     <div className="col-12 col-sm-11 offset-sm-1 mt-4">
                         <div className="btn-group" role="group">
@@ -340,7 +341,7 @@ class Contact extends Component {
                                 </Col>
                                 <Col md={{size: 3, offset: 1}}>
                                     <Control.select model=".contactType" name="contactType"
-                                        className="form-control">
+                                        className="form-control m-0">
                                         <option>Tel.</option>
                                         <option>Email</option>
                                     </Control.select>
