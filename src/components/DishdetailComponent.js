@@ -27,9 +27,10 @@ class CommentForm extends Component{
 
       handleSubmit(values) {
           this.toggleComment();
-        console.log('Current State is: ' + JSON.stringify(values));
+        // console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
         // values.preventDefault();
+        this.props.addComment(this.props.dishId, values.Rating, values.name, values.comment);
     }
 
     render()
@@ -37,13 +38,13 @@ class CommentForm extends Component{
         return(
             <div>
             <Modal isOpen={this.state.isCommentOpen} toggle={this.toggleComment}>
-            <ModalHeader  toggle={this.toggleComment}>Submit Comment</ModalHeader>
-            <ModalBody >
+            <ModalHeader className="hcolor" toggle={this.toggleComment}>Submit Comment</ModalHeader>
+            <ModalBody className="bcolor">
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                      <Row className="form-group">
-                            <Label  md={12}>Rating</Label>
+                            <Label  htmlFor="Rating" md={12}>Rating</Label>
                                 <Col md={{size: 12}}>
-                                    <Control.select model=".contactType" name="contactType"
+                                    <Control.select model=".Rating" id="Rating" name="contactType"
                                         className="form-control">
                                         <option>1</option>
                                         <option>2</option>
@@ -54,9 +55,9 @@ class CommentForm extends Component{
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="Your Name" md={12}>Your Name</Label>
+                                <Label htmlFor="name" md={12}>Your Name</Label>
                                 <Col md={12}>
-                                    <Control.text model=".Your Name" id="Your Name" name="Your Name"
+                                    <Control.text model=".name" id="name" name="Your Name"
                                         placeholder="Your Name"
                                         className="form-control"
                                         validators={{
@@ -144,7 +145,7 @@ class CommentForm extends Component{
     
   }
 
-  renderComments(comment) {
+  renderComments(comment,dish,addComment) {
       if(comment != null){
         const com=comment.map((arr) => {
              return (
@@ -165,7 +166,7 @@ class CommentForm extends Component{
                   Comments
               </h4>
               {com}
-              <CommentForm />
+              <CommentForm dishId={dish} addComment={addComment} />
           </div> 
           
       );
@@ -181,6 +182,7 @@ class CommentForm extends Component{
             render(){
                 const dish=this.props.dish;
                 const comment=this.props.comments;
+                //  const addComment=this.props.addComment;
                 return (
                     <div className="container">
           
@@ -199,7 +201,7 @@ class CommentForm extends Component{
                 </div>
                         <div className="row">
                          {this.renderDish(dish)}
-                            {this.renderComments(comment)}
+                            {this.renderComments(comment,this.props.dish.id,this.props.addComment)}
                         </div>
                         {/* <Modal isOpen={this.state.isCommentOpen} toggle={this.toggleComment}>
             <ModalHeader  toggle={this.toggleComment}>Submit Comment</ModalHeader>
