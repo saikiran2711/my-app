@@ -3,6 +3,7 @@ import { Card, CardImg,  CardText, CardTitle, CardBody, ListGroup,Breadcrumb,Bre
 import {Link} from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import {Modal, ModalHeader,ModalBody,Label,Row,Col} from 'reactstrap';
+import { Loading } from './LoadingComponent';
 
 
 const required = (val) => val && val.length;
@@ -180,6 +181,27 @@ class CommentForm extends Component{
   }
 
             render(){
+
+                if (this.props.isLoading) {
+                    return(
+                        <div className="container">
+                            <div className="row">            
+                                <Loading />
+                            </div>
+                        </div>
+                    );
+                }
+                else if (this.props.errMess) {
+                    return(
+                        <div className="container">
+                            <div className="row">            
+                                <h4>{this.props.errMess}</h4>
+                            </div>
+                        </div>
+                    );
+                }
+
+                else if(this.props.dish !==null) {
                 const dish=this.props.dish;
                 const comment=this.props.comments;
                 //  const addComment=this.props.addComment;
@@ -255,7 +277,7 @@ class CommentForm extends Component{
             </ModalBody>
         </Modal> */}
                      </div>
-                );
+                ); }
 
             }
 
