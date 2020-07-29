@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem,Button,Col,Label,Row } from 'reactstrap';
 // import {loc} from "../shared/img/loc.png";
 // import { Control, LocalForm, Errors } from 'react-redux-form';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 
 const required = (val) => val && val.length;

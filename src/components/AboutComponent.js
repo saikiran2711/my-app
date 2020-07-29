@@ -1,15 +1,16 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../shared/baseUrl';
 
-function RenderLeader({leader})
+function RenderLeader({leaders})
 {
-    const l=leader.map((lead) => {
+    const l=leaders.map((lead) => {
         return(
             <div key={lead.id} >
             <Media tag="li" className="col mt-3">
               <Media left middle>
-                  <Media object className="img-thumbnail" src={lead.image} alt={lead.name} />
+                  <Media object className="img-thumbnail" src={ baseUrl + lead.image} alt={lead.name} />
               </Media>
               <Media body className="ml-5">
                 <Media heading>{lead.name}</Media>
@@ -28,6 +29,11 @@ function RenderLeader({leader})
     );
 }
 
+// componentDidMount()
+// {
+//     this.props.fecthLeaders();
+// }
+
 function About(props) {
 
     // const leaders = props.leaders.map((leader) => {
@@ -36,7 +42,11 @@ function About(props) {
     //     );
     // });
 
-    const leader=props.leaders;
+    // const leader=props.leader;
+    // componentDidMount()
+    // {
+    //     this.props.fecthLeaders();
+    // }
     return(
         <div className="container">
             <div className="row">
@@ -93,7 +103,7 @@ function About(props) {
                 </div>
                     {/* <div className="col-12"> */}
                     <Media list>
-                    <RenderLeader leader={leader} />
+                    <RenderLeader leaders={props.leaders} />
                     </Media>
                     {/* </div> */}
                 </div>
