@@ -32,7 +32,7 @@ class CommentForm extends Component{
         // console.log('Current State is: ' + JSON.stringify(values));
         // alert('Current State is: ' + JSON.stringify(values));
         // values.preventDefault();
-        this.props.addComment(this.props.dishId, values.Rating, values.name, values.comment);
+        this.props.postComment(this.props.dishId, values.Rating, values.name, values.comment);
     }
 
     render()
@@ -147,7 +147,7 @@ class CommentForm extends Component{
     
   }
 
-  renderComments(comment,dish,addComment) {
+  renderComments(comment,dish,postComment) {
       if(comment != null){
         const com=comment.map((arr) => {
              return (
@@ -168,7 +168,7 @@ class CommentForm extends Component{
                   Comments
               </h4>
               {com}
-              <CommentForm dishId={dish} addComment={addComment} />
+              <CommentForm dishId={dish} postComment={postComment} />
           </div> 
           
       );
@@ -224,7 +224,7 @@ class CommentForm extends Component{
                 </div>
                         <div className="row">
                          {this.renderDish(dish)}
-                            {this.renderComments(comment,this.props.dish.id,this.props.addComment)}
+                            {this.renderComments(comment,this.props.dish.id,this.props.postComment)}
                         </div>
                         {/* <Modal isOpen={this.state.isCommentOpen} toggle={this.toggleComment}>
             <ModalHeader  toggle={this.toggleComment}>Submit Comment</ModalHeader>
