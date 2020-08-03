@@ -6,6 +6,7 @@ import { Breadcrumb, BreadcrumbItem,Button,Col,Label,Row } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 
 
+
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -56,8 +57,10 @@ class Contact extends Component {
     // }
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        // alert('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(values.firstname,values.lastname,values.telnum, values.email,values.agree,values.contactType,values.message );
         this.props.resetFeedbackForm();
+        // this.props.postFeedback(values.fistname,values.lastname,values.telnum, values.email,values.agree,values.contactType,values.message );
         // event.preventDefault();
     }
 
@@ -359,7 +362,7 @@ class Contact extends Component {
                             </Row>
                             <Row className="form-group">
                                 <Col md={{size:10, offset: 2}}>
-                                    <Button type="submit" color="primary">
+                                    <Button type="submit"  color="primary">
                                     Send Feedback
                                     </Button>
                                 </Col>

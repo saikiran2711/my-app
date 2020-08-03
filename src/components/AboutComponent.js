@@ -1,12 +1,36 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media,  } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {baseUrl} from '../shared/baseUrl';
+import {  Fade, Stagger } from 'react-animation-components';
+import {Loading} from './LoadingComponent';
 
-function RenderLeader({leaders})
+function RenderLeader({leaders,leadersLoading,leadersErrMess})
 {
+    if(leadersLoading)
+    {
+        return(
+            <div className="container">
+                <div className="row"> 
+                           
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    else if(leadersErrMess){
+        return(
+            <div className="container">
+                <div className="row">            
+                    <h4>{leadersErrMess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else {
     const l=leaders.map((lead) => {
         return(
+            <Fade in>
             <div key={lead.id} >
             <Media tag="li" className="col mt-3">
               <Media left middle>
@@ -19,14 +43,18 @@ function RenderLeader({leaders})
               </Media>
             </Media>
           </div>
+          </Fade>
         );
     });
     return(
 
         <div>
+            <Stagger in>
             {l}
+            </Stagger>
         </div>
     );
+}
 }
 
 // componentDidMount()
@@ -98,14 +126,18 @@ function About(props) {
                 </div>
             </div>
             <div className="row row-content">
-                <div className="col col-md-8">
+                <div className="col-12 col-md-12">
                     <h2>Corporate Leadership</h2>
                 </div>
+                <div className="row">
+                    <div className="col">
                     {/* <div className="col-12"> */}
                     <Media list>
-                    <RenderLeader leaders={props.leaders} />
+                    <RenderLeader leaders={props.leaders} leadersLoading={props.leadersLoading} leadersErrMess={props.leadersErrMess}/>
                     </Media>
                     {/* </div> */}
+                    </div>
+                    </div>
                 </div>
             </div>
     

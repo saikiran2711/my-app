@@ -5,6 +5,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import {Modal, ModalHeader,ModalBody,Label,Row,Col} from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 const required = (val) => val && val.length;
@@ -127,8 +128,14 @@ class CommentForm extends Component{
   renderDish(dish) {
       if(dish != null){
           return(
+
               
                   <div className="col col-md-5 m-1">
+                    <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
               <Card>
                   <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                   <CardBody>
@@ -136,6 +143,7 @@ class CommentForm extends Component{
                     <CardText>{dish.description}</CardText>
                   </CardBody>
               </Card>
+              </FadeTransform>
               </div>
               
           );}
@@ -149,16 +157,22 @@ class CommentForm extends Component{
 
   renderComments(comment,dish,postComment) {
       if(comment != null){
+          
         const com=comment.map((arr) => {
              return (
-
-                <ListGroup
-                 key={arr.id}>
-                <li className="list-unstyled">
+                 
+                <Fade in>
+                <ListGroup key={arr.id}>
+                     {/* <Fade in> */}
+                <li  className="list-unstyled">
                 <p>{arr.comment}</p>
                 <p>-- {arr.author}, {arr.date}</p>
                 </li>
+                {/* </Fade> */}
                 </ListGroup>
+                </Fade>
+                
+                
             )
       });
       return (
@@ -167,11 +181,14 @@ class CommentForm extends Component{
               <h4>
                   Comments
               </h4>
+              <Stagger in>
               {com}
+              </Stagger>
               <CommentForm dishId={dish} postComment={postComment} />
           </div> 
           
       );
+      
     }
       else {
           return(
