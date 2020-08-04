@@ -37,30 +37,16 @@ function RenderCard({item,isLoading,errMess}) {
 }
 
 function Home(props) {
-    // if (props.dishesLoading) {
-    //     return(
-    //             <Loading />
-    //     );
-    // }
-    // else if (props.dishErrMess) {
-    //     return(
-    //             <div className="container">
-    //                 <h4>{props.dishErrMess}</h4>
-    //             </div>
-    //             // <h4>{props.dishErrMess}</h4>
-    //     );
-    // }
-    // else {
     return(
         
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
-                    {/* <RenderCard item={props.dish} /> */}
+                    
                     <RenderCard item={props.dish} isLoading={props.dishesLoading} errMess={props.dishErrMess}  />
                 </div>
                 <div className="col-12 col-md m-1">
-                {/* <RenderCard item={props.promotion} /> */}
+                
                 <RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
                 </div>
                 <div className="col-12 col-md m-1">
@@ -72,6 +58,6 @@ function Home(props) {
         </div>
     );
 }
-// }
+
 
 export default Home;

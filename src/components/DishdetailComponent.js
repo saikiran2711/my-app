@@ -30,9 +30,6 @@ class CommentForm extends Component{
 
       handleSubmit(values) {
           this.toggleComment();
-        // console.log('Current State is: ' + JSON.stringify(values));
-        // alert('Current State is: ' + JSON.stringify(values));
-        // values.preventDefault();
         this.props.postComment(this.props.dishId, values.Rating, values.name, values.comment);
     }
 
@@ -101,32 +98,9 @@ class CommentForm extends Component{
 
 
  class DishDetail extends Component{
-//      constructor(props){
-//          super(props);
-    
-//     this.toggleComment=this.toggleComment.bind(this);
-//     this.handleSubmit=this.handleSubmit.bind(this);
-    
-//     this.state = {
-//       isCommentOpen:false
-//     };
-//   }
-
-//   toggleComment() {
-//     this.setState({
-//       isCommentOpen: !this.state.isCommentOpen
-//     });
-//   }
-
-//   handleSubmit(values) {
-//       this.toggleComment();
-//     console.log('Current State is: ' + JSON.stringify(values));
-//     alert('Current State is: ' + JSON.stringify(values));
-//     // event.preventDefault();
-// }
 
   renderDish(dish) {
-      if(dish != null){
+      if(dish !==null){
           return(
 
               
@@ -149,31 +123,33 @@ class CommentForm extends Component{
           );}
           else{
               return (
-                  <div></div>
-              )
+                  <div>
+
+                  </div>
+              );
           }
     
   }
 
   renderComments(comment,dish,postComment) {
-      if(comment != null){
+      if(comment !==null){
           
         const com=comment.map((arr) => {
              return (
                  
                 <Fade in>
                 <ListGroup key={arr.id}>
-                     {/* <Fade in> */}
+                     
                 <li  className="list-unstyled">
                 <p>{arr.comment}</p>
                 <p>-- {arr.author}, {arr.date}</p>
                 </li>
-                {/* </Fade> */}
+                
                 </ListGroup>
                 </Fade>
                 
                 
-            )
+            );
       });
       return (
           
@@ -194,7 +170,7 @@ class CommentForm extends Component{
           return(
             <div >
             </div>
-          )
+          );
       }
   }
 
@@ -222,12 +198,12 @@ class CommentForm extends Component{
                 else if(this.props.dish !==null) {
                 const dish=this.props.dish;
                 const comment=this.props.comments;
-                //  const addComment=this.props.addComment;
+            
                 return (
                     <div className="container">
           
     
-                    {/* <div className="container"> */}
+                
                          <div className="row">
                     <Breadcrumb>
 
@@ -243,57 +219,7 @@ class CommentForm extends Component{
                          {this.renderDish(dish)}
                             {this.renderComments(comment,this.props.dish.id,this.props.postComment)}
                         </div>
-                        {/* <Modal isOpen={this.state.isCommentOpen} toggle={this.toggleComment}>
-            <ModalHeader  toggle={this.toggleComment}>Submit Comment</ModalHeader>
-            <ModalBody >
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                     <Row className="form-group">
-                            <Label  md={12}>Rating</Label>
-                                <Col md={{size: 12}}>
-                                    <Control.select model=".contactType" name="contactType"
-                                        className="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </Control.select>
-                                </Col>
-                            </Row>
-                            <Row className="form-group">
-                                <Label htmlFor="Your Name" md={12}>Your Name</Label>
-                                <Col md={12}>
-                                    <Control.text model=".Your Name" id="Your Name" name="Your Name"
-                                        placeholder="Your Name"
-                                        className="form-control"
-                                        validators={{
-                                            required,minLength: minLength(3), maxLength: maxLength(15)
-                                        }}
-                                         />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".Your Name"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required ',
-                                            minLength: 'Must be greater than 2 characters ',
-                                            maxLength: 'Must be 15 characters or less'
-                                        }}
-                                     />
-                                </Col>
-                            </Row>
-                            <Row className="form-group">
-                                <Label htmlFor="comment" md={12}>Comment</Label>
-                                <Col md={12}>
-                                    <Control.textarea model=".comment" id="comment" name="comment"
-                                        rows="6"
-                                        className="form-control" />
-                                </Col>
-                            </Row>
-                    <Button type="submit" value="submit" color="primary">Submit</Button>
-                </LocalForm>
-            </ModalBody>
-        </Modal> */}
+                      
                      </div>
                 ); }
 

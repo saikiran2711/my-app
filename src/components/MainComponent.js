@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import Menu from './MenuComponent';
-// import {DISHES } from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect,withRouter } from 'react-router-dom';
 import Contact from "./ContactComponent";
-// import { COMMENTS } from '../shared/comments';
-// import { PROMOTIONS } from '../shared/promotions';
-// import { LEADERS } from '../shared/leaders';
 import About from './AboutComponent';
 import {connect} from 'react-redux';
 import { postComment,postFeedback } from '../redux/ActionCreators';
 import {  fetchDishes, fetchComments, fetchPromos ,fetchLeaders } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
-// import { isThisTypeNode } from 'typescript';
+
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = (state) => {
@@ -41,23 +37,18 @@ const mapDispatchToProps = (dispatch) => ({
 class Main extends Component{
     
   componentDidMount() {
-    this.props.fetchLeaders();
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
-    // this.props.fetchLeaders();
+    this.props.fetchLeaders();
   }
-    // onDishSelect(dish) {
-    //     this.setState({ selectedDish: dish });
-    // }
+    
   render() {
 
       const DishWithId=({match}) => {
         return(
 
-          // <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
-          // comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} 
-          // />
+          
           <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]}
             isLoading={this.props.dishes.isLoading}
             errMess={this.props.dishes.errMess}
@@ -95,7 +86,6 @@ class Main extends Component{
   return (
     <div>
     <Header />
-    {/* <div className="container"> */}
     <TransitionGroup>
     <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
     <Switch location={this.props.location}>
@@ -110,10 +100,10 @@ class Main extends Component{
           </TransitionGroup>
     <Footer />
     </div>
-  // </div>
+  
   );
   }
 }
 
-// export default  withRouter(connect(mapStateToProps)(Main));
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
